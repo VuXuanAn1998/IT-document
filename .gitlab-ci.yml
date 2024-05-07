@@ -1,0 +1,20 @@
+# File: .gitlab-ci.yml
+
+# Lựa chọn image Docker phù hợp, có Node.js và npm
+image: node:latest
+
+# Các stages trong quy trình CI/CD
+stages:
+  - build
+
+# Job để xây dựng ứng dụng Nuxt.js
+build:
+  stage: build
+  script:
+    # Cài đặt dependencies và build ứng dụng
+    - npm install
+    - npm run build
+  artifacts:
+    paths:
+      - .nuxt/   # Thư mục build của Nuxt.js
+    expire_in: 1 week
